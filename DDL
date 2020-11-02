@@ -1,0 +1,73 @@
+mysql> CREATE TABLE emp1(empid INT,empname varchar(100),location varchar(100));
+Query OK, 0 rows affected (2.34 sec)
+
+mysql> insert into emp1(empid,empname,location)values('1','naveen','chennai'),('2','john','kochi');
+Query OK, 2 rows affected (0.13 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> select *from emp1;
++-------+---------+----------+
+| empid | empname | location |
++-------+---------+----------+
+|     1 | naveen  | chennai  |
+|     2 | john    | kochi    |
++-------+---------+----------+
+2 rows in set (0.00 sec)
+
+mysql> DROP TABLE emp1;
+Query OK, 0 rows affected (1.96 sec)
+
+mysql> select *from emp1;
+ERROR 1146 (42S02): Table 'mysql.emp1' doesn't exist
+mysql> TRUNCATE TABLE emp;
+Query OK, 0 rows affected (1.82 sec)
+
+mysql> select *from emp1;
+
+mysql> CREATE TABLE emp2(empid INT,empname varchar(100),location varchar(100));
+Query OK, 0 rows affected (1.69 sec)
+
+mysql> INSERT INTO emp2(empid,empname,location) values ('1','jhansi','chennai'),('2','suji','bangalore'),('3','navya','kerala');
+Query OK, 3 rows affected (0.27 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> ALTER TABLE emp2 ADD surname varchar(100);
+Query OK, 0 rows affected (1.33 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select *from emp2;
++-------+---------+-----------+---------+
+| empid | empname | location  | surname |
++-------+---------+-----------+---------+
+|     1 | jhansi  | chennai   | NULL    |
+|     2 | suji    | bangalore | NULL    |
+|     3 | navya   | kerala    | NULL    |
++-------+---------+-----------+---------+
+3 rows in set (0.00 sec)
+
+mysql> ALTER TABLE emp2 RENAME TO employee;
+Query OK, 0 rows affected (1.03 sec)
+
+mysql> select *from employee;
++-------+---------+-----------+---------+
+| empid | empname | location  | surname |
++-------+---------+-----------+---------+
+|     1 | jhansi  | chennai   | NULL    |
+|     2 | suji    | bangalore | NULL    |
+|     3 | navya   | kerala    | NULL    |
++-------+---------+-----------+---------+
+3 rows in set (0.17 sec)
+
+mysql> ALTER TABLE employee RENAME COLUMN surname TO phonenum;
+Query OK, 0 rows affected (0.82 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select *from employee;
++-------+---------+-----------+----------+
+| empid | empname | location  | phonenum |
++-------+---------+-----------+----------+
+|     1 | jhansi  | chennai   | NULL     |
+|     2 | suji    | bangalore | NULL     |
+|     3 | navya   | kerala    | NULL     |
++-------+---------+-----------+----------+
+3 rows in set (0.05 sec)
